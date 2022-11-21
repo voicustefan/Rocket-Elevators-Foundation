@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location of building:</strong>
+  <%= @map.location_of_building %>
+</p>
+
+<p>
+  <strong>Number of floors:</strong>
+  <%= @map.number_of_floors %>
+</p>
+
+<p>
+  <strong>Client name:</strong>
+  <%= @map.client_name %>
+</p>
+
+<p>
+  <strong>Number of batteries:</strong>
+  <%= @map.number_of_batteries %>
+</p>
+
+<p>
+  <strong>Number of columns:</strong>
+  <%= @map.number_of_columns %>
+</p>
+
+<p>
+  <strong>Number of elevators:</strong>
+  <%= @map.number_of_elevators %>
+</p>
+
+<p>
+  <strong>Full name of technical contact:</strong>
+  <%= @map.full_name_of_technical_contact %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @map.long %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @map.lat %>
+</p>
+
+<%= link_to 'Edit', edit_map_path(@map) %> |
+<%= link_to 'Back', maps_path %>

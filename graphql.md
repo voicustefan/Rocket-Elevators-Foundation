@@ -1,0 +1,2 @@
+- The [endpoints results infos] are migrating toward "factintervention" table.
+- graphql extract the neccessary info from "factintervention" table

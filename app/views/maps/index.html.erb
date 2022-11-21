@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Maps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location of building</th>
+      <th>Number of floors</th>
+      <th>Client name</th>
+      <th>Number of batteries</th>
+      <th>Number of columns</th>
+      <th>Number of elevators</th>
+      <th>Full name of technical contact</th>
+      <th>Long</th>
+      <th>Lat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @maps.each do |map| %>
+      <tr>
+        <td><%= map.location_of_building %></td>
+        <td><%= map.number_of_floors %></td>
+        <td><%= map.client_name %></td>
+        <td><%= map.number_of_batteries %></td>
+        <td><%= map.number_of_columns %></td>
+        <td><%= map.number_of_elevators %></td>
+        <td><%= map.full_name_of_technical_contact %></td>
+        <td><%= map.long %></td>
+        <td><%= map.lat %></td>
+        <td><%= link_to 'Show', map %></td>
+        <td><%= link_to 'Edit', edit_map_path(map) %></td>
+        <td><%= link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Map', new_map_path %>

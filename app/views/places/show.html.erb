@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type of address:</strong>
+  <%= @place.type_of_address %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @place.status %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @place.entity %>
+</p>
+
+<p>
+  <strong>Number and street:</strong>
+  <%= @place.number_and_street %>
+</p>
+
+<p>
+  <strong>Suite or apartment:</strong>
+  <%= @place.suite_or_apartment %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @place.city %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @place.postal_code %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @place.country %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @place.notes %>
+</p>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>
+
+<p>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{@place.postal_code}&key=#{'AIzaSyDptB7mIn69d3vF4ek94q-w3-z0Y4cSeCk'}", alt: "Map" %>
+</p>

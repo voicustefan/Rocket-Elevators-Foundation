@@ -1,0 +1,63 @@
+<%= form_tag({:controller => :dropbox, :action => :upload}, :method => "post", :multipart => true) do |f| %>       
+        <div class="row">
+                <div class="col-md-4">
+                    <label for="contact:name">Full Name</label>
+                    <input required type="text" value="" class="form-control" name="leads[full_name]" id="full_name">  
+                </div>
+                <div class="col-md-4">
+                    <label for="contact:email">Company Name</label>
+                    <input required type="text" value="" class="form-control" name="leads[company_name]" id="company_name">
+                </div>
+                <div class="col-md-4">
+                    <label for="contact:phone">Phone</label>
+                    <input type="text" value="" class="form-control" name="leads[phone]" id="phone">
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4">
+                    <label for="contact:subject">Email</label>
+                    <input required type="text" value="" class="form-control" name="leads[email]" id="email">
+                </div>
+                <div class="col-md-4">
+                    <label for="contact:subject">Project Name</label>
+                    <input required type="text" value="" class="form-control" name="leads[project_name]" id="project_name">
+                </div>
+                <div class="col-md-4">
+                    <label for="contact_department">Department</label>
+                    <select class="form-control pointer" name="leads[department]" id="department">
+                        <option value="">--- Select ---</option>
+                        <option value="Marketing">Residential</option>
+                        <option value="Webdesign">Corporate</option>
+                    </select>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <label for="contact:message">Project Description</label>
+                    <textarea required maxlength="10000" rows="8" class="form-control" name="leads[project_description]" id="project_description"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="contact:message">Message*</label>
+                    <textarea required maxlength="10000" rows="8" class="form-control" name="leads[message]" id="message"></textarea>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                    <label for="contact:attachment">File Attachment</label>
+
+                    <!-- custom file upload -->
+            <div class="field">
+                <%= notice %>
+            </div>       
+            <div class="field">
+                <%= label_tag "File name" %><br />
+                <%= file_field_tag :file %>
+            </div>  
+            <div class="actions">
+                <%= submit_tag "Upload" %>
+            </div>      
+        </div>
+        </div>
+        <br> 
+    <%= submit_tag "Submit", id:"submit", class:"btn btn-blue" %>
+<% end %>
