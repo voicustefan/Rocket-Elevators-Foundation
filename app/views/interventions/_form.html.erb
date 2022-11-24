@@ -1,0 +1,240 @@
+<head>
+    <title>RocketElevatorGroupWebsite</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.slim.min.js' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' %>
+    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<!-- SLIDE TOP -->
+		<div id="slidetop">
+
+			<div class="container">
+				
+				<div class="row">
+
+					<div class="col-md-4">
+						<h6><i class="icon-heart"></i> Rocket Elevators</h6>
+						<p>Elevate Safety, Speed and style</p>
+					</div>
+
+					<div class="col-md-4">
+						<h6><i class="icon-envelope"></i> CONTACT INFO</h6>
+						<ul class="list-unstyled">
+							<li><b>Address:</b> <br /> Wellington, Verdun, Canada</li>
+							<li><b>Phone:</b> 1(800)-555-1234</li>
+							<li><b>Email:</b> <a href="mailto:support@yourname.com">support@rocketelevators.com</a></li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+			<a class="slidetop-toggle" href="#"><!-- toggle button --></a>
+
+		</div>
+		<!-- /SLIDE TOP -->
+				<!-- wrapper -->
+		<div id="wrapper">
+
+	
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="#">
+							<%= image_tag "R2.png" %>
+						</a>
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li >
+										<%= link_to "Home" , root_path %>
+									</li>
+									<li><!-- SERVICES -->
+										<%= link_to "Service" , root_path %>
+									</li>
+									<li><!-- Portfolio -->
+										<%= link_to "Portfolio" , root_path %>
+									</li>
+									<li><!-- NEWS -->
+										<%= link_to "News" , root_path %>
+									</li>
+									<li><!-- CLIENTS -->
+										<%= link_to "Clients" , root_path %>
+									</li>
+									<li><!-- CONTACT -->
+										<%= link_to "Contact" , root_path %>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+			</div>
+			<!-- CONTACT -->
+			<section id="contact">
+				<div class="container">
+
+					<header class="text-center mb-60">
+						<h2>Intervention</h2>
+						<hr />
+					</header>
+
+
+					<div class="row">
+
+						<!-- FORM -->
+						<!-- FORM -->
+						<div class="col-md-8 col-sm-8">
+							<h3>Please fill information <strong><em></em></strong></h3>
+							<!-- Alert Success -->
+							<div id="alert_success" class="alert alert-success mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Thank You!</strong> Your message successfully sent!
+							</div><!-- /Alert Success -->
+
+
+							<!-- Alert Failed -->
+							<div id="alert_failed" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>[SMTP] Error!</strong> Internal server error!
+							</div><!-- /Alert Failed -->
+
+
+							<!-- Alert Mandatory -->
+							<div id="alert_mandatory" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+							</div><!-- /Alert Mandatory -->
+
+
+							<%= form_with url:interventions_path, id:"fields", local:true, method: :post do |form| %>
+								<%# <fieldset> %>
+
+									<%# <div class="row"> %>
+                  
+                                    <div class="field">
+                                      <%= form.label "Select a customer" %><br /> 
+                                      <%= form.collection_select(:customerID, Customer.all, :id, :company_name) %>            
+                                    </div>
+                                    <br>
+                                	<div class="hideme">
+                                    	<%= form.label "Select a building" %><br /> 
+                                      <%= form.collection_select(:buildingID, Building.all, :id, :Full_Name_of_the_building_administrator) %>
+										              </div>
+                                  <br>
+                                  <div class="hideme">
+                                    	<%= form.label "Select a battery" %><br /> 
+                                      <%= form.collection_select(:batteryID, Battery.all, :id, :id) %>
+										              </div>
+                                  <br>
+                                  <div class="hideme">
+                                    	<%= form.label "Select a column" %><br /> 
+                                      <%= form.collection_select(:columnID, Column.all, :id, :id) %>
+										              </div>
+                                  <br>
+                                  <div class="hideme">
+                                    	<%= form.label "Select an elevator" %><br /> 
+                                      <%= form.collection_select(:elevatorID, Elevator.all, :id, :serialNumber) %>
+										              </div>
+                                  <br>
+                                  <div class="field">
+                                    	<%= form.label "Select an employee" %><br /> 
+                                      <%= form.collection_select(:employeeID, Employee.all, :id, :title) %>
+										              </div>
+                                  <br>
+                                  <div class="field">
+                                    <%= form.label "Description" %>
+                                    <%= form.text_field :report %>
+                                  </div>
+								<%# </div>	 %>
+								<br>
+								<%= submit_tag "Submit", id:"submit", class:"btn btn-blue" %>
+							
+							<% end %>
+						</div>
+
+						
+
+					</div>
+
+				</div>
+			</section>
+            <!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								Rocket Elevators has been making world class elevators for almost 50 years, and with no plans to stop, just like our elevators we're going to the top.
+							</p>
+							<h2>1(800)-555-1234</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-danger" type="submit">Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /FOOTER -->

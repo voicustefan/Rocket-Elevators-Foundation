@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_173021) do
+ActiveRecord::Schema.define(version: 2022_11_23_161511) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -148,6 +148,39 @@ ActiveRecord::Schema.define(version: 2022_11_09_173021) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fact_interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "employeeid"
+    t.string "buildingid"
+    t.string "batteriesid"
+    t.string "elevatorid"
+    t.string "columnid"
+    t.string "result"
+    t.string "startdateandtime"
+    t.string "enddateandtime"
+    t.string "success"
+    t.string "report"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "author"
+    t.string "customerID"
+    t.string "buildingID"
+    t.string "batteryID"
+    t.string "columnID"
+    t.string "elevatorID"
+    t.string "employeeID"
+    t.integer "startDate"
+    t.integer "endDate"
+    t.string "result"
+    t.string "report"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "full_name"
     t.string "company_name"
@@ -157,7 +190,6 @@ ActiveRecord::Schema.define(version: 2022_11_09_173021) do
     t.string "project_description"
     t.string "department"
     t.text "message"
-    t.binary "attached_file"
     t.binary "image"
     t.string "date"
     t.datetime "created_at", null: false
