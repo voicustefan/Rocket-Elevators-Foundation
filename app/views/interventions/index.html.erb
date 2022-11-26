@@ -24,18 +24,18 @@
   <tbody>
     <% @interventions.each do |intervention| %>
       <tr>
-        <td><%= intervention.author %></td>
-        <td><%= intervention.customerID %></td>
-        <td><%= intervention.buildingID %></td>
-        <td><%= intervention.batteryID %></td>
-        <td><%= intervention.columnID %></td>
-        <td><%= intervention.elevatorID %></td>
-        <td><%= intervention.employeeID %></td>
-        <td><%= intervention.startDate %></td>
-        <td><%= intervention.endDate %></td>
-        <td><%= intervention.result %></td>
-        <td><%= intervention.report %></td>
-        <td><%= intervention.status %></td>
+        <td><%= intervention.Author %></td>
+        <td><%= intervention.CustomerID %></td>
+        <td><%= intervention.BuildingID %></td>
+        <td><%= intervention.BatteryID %></td>
+        <td><%= intervention.ColumnID %></td>
+        <td><%= intervention.ElevatorID %></td>
+        <td><%= intervention.EmployeeID %></td>
+        <td><%= intervention.StartDate %></td>
+        <td><%= intervention.EndDate %></td>
+        <td><%= intervention.Result %></td>
+        <td><%= intervention.Report %></td>
+        <td><%= intervention.Status %></td>
         <td><%= link_to 'Show', intervention %></td>
         <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
         <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>

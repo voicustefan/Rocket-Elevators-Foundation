@@ -24,7 +24,7 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
-
+     
     respond_to do |format|
       if @intervention.save
         format.html { redirect_to intervention_url(@intervention), notice: "Intervention was successfully created." }
@@ -34,6 +34,27 @@ class InterventionsController < ApplicationController
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
     end
+    # # # creates a ticket
+    data  = {
+      status: 2, 
+      priority: 1,
+      subject: "Incident",
+      email: 'allo@hotmail.com',
+      description: " Requester: #{@intervention.Author} , " + " Customer: #{@intervention.CustomerID} , " + " Building ID: #{ @intervention.BuildingID} , " + " Battery ID: #{@intervention.BatteryID} , " + " Column ID: #{ @intervention.ColumnID} " + " Elevator ID: #{ @intervention.ElevatorID} , " + " Employee: #{@intervention.EmployeeID} , " + " Report: #{ @intervention.Report} "
+    }
+
+    data_json = JSON.generate(data)
+  
+   
+      
+    request = RestClient::Request.execute(
+      method: :post,
+      url: 'https://rockets-help.freshdesk.com/api/v2/tickets',
+      user: 'HmvDUJ4UJMl5GwnzVQR',
+      password: 'X',
+      payload: data_json,
+      headers: {"Content-Type" => 'application/json'}
+    )
   end
 
   # PATCH/PUT /interventions/1 or /interventions/1.json
@@ -67,6 +88,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.permit(:customerID, :buildingID, :batteryID, :columnID, :elevatorID, :employeeID)
+      params.permit(:Author, :CustomerID, :BuildingID, :BatteryID, :ColumnID, :ElevatorID, :EmployeeID, :Result, :Report, :Status)
     end
 end

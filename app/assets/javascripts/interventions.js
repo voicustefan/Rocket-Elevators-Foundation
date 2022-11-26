@@ -1,0 +1,39 @@
+$(function(){
+    $('#Building').hide();
+    $('#Battery').hide();
+    $('#Column').hide();
+    $('#Elevator').hide();
+});
+$(function(){
+    $($('select#intervention_CustomerID')).change(function(){
+        $('#Building').show();
+        $('#Battery').hide();
+        $('#Column').hide();
+        $('#Elevator').hide();
+    })
+    $($('select#intervention_BuildingID')).click(function(){
+        $('#Building').show();
+        $('#Battery').show();
+        $('#Column').hide();
+        $('#Elevator').hide();
+        
+    })
+    $($('select#intervention_BatteryID')).change(function(){
+        $('#Building').show();
+        $('#Battery').show();
+        $('#Column').show();
+        $('#Elevator').hide();
+    })
+    $($('select#intervention_ColumnID')).change(function(){
+        $('#Building').show();
+        $('#Battery').show();
+        $('#Column').show();
+        $('#Elevator').show();
+    })
+    $($('select#intervention_ElevatorID')).change(function(){
+        $('#Building').show();
+        $('#Battery').show();
+        $('#Column').show();
+        $('#Elevator').show();
+    })
+});

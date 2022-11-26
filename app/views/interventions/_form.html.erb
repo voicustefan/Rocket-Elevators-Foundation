@@ -124,58 +124,56 @@
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
 							</div><!-- /Alert Mandatory -->
+              					<%= form_with model: intervention, local:true, url:interventions_path do |f| %>
+									
 
-
-							<%= form_with url:interventions_path, id:"fields", local:true, method: :post do |form| %>
-								<%# <fieldset> %>
-
-									<%# <div class="row"> %>
-                  
-                                    <div class="field">
-                                      <%= form.label "Select a customer" %><br /> 
-                                      <%= form.collection_select(:customerID, Customer.all, :id, :company_name) %>            
-                                    </div>
-                                    <br>
-                                	<div class="hideme">
-                                    	<%= form.label "Select a building" %><br /> 
-                                      <%= form.collection_select(:buildingID, Building.all, :id, :Full_Name_of_the_building_administrator) %>
-										              </div>
-                                  <br>
-                                  <div class="hideme">
-                                    	<%= form.label "Select a battery" %><br /> 
-                                      <%= form.collection_select(:batteryID, Battery.all, :id, :id) %>
-										              </div>
-                                  <br>
-                                  <div class="hideme">
-                                    	<%= form.label "Select a column" %><br /> 
-                                      <%= form.collection_select(:columnID, Column.all, :id, :id) %>
-										              </div>
-                                  <br>
-                                  <div class="hideme">
-                                    	<%= form.label "Select an elevator" %><br /> 
-                                      <%= form.collection_select(:elevatorID, Elevator.all, :id, :serialNumber) %>
-										              </div>
-                                  <br>
-                                  <div class="field">
-                                    	<%= form.label "Select an employee" %><br /> 
-                                      <%= form.collection_select(:employeeID, Employee.all, :id, :title) %>
-										              </div>
-                                  <br>
-                                  <div class="field">
-                                    <%= form.label "Description" %>
-                                    <%= form.text_field :report %>
-                                  </div>
-								<%# </div>	 %>
-								<br>
-								<%= submit_tag "Submit", id:"submit", class:"btn btn-blue" %>
-							
-							<% end %>
+									<div class="field">
+									<%= f.label :Author, "Author" %><br>
+									<%= f.collection_select :Author, Employee.order(:firstname, :lastname), :firstname, :lastname %><br>
+									</div> 
+									<div class="field">
+									<%= f.label :CustomerID, "Please Select Customer." %><br>
+									<%= f.collection_select :CustomerID, Customer.order(:company_name), :id, :company_name %><br>
+									</div>
+									<div class="field">
+									<%= f.label :BuildingID, "Please Select Building" %><br>
+									<%= f.grouped_collection_select :BuildingID, Customer.order(:company_name), :building, :company_name, :id, :Address_of_the_building %><br>
+									</div>
+									<div class="field">
+									<%= f.label :BatteryID, "Please Select Battery" %><br>
+									<%= f.grouped_collection_select :BatteryID, Building.order(:Address_of_the_building), :battery, :Address_of_the_building, :id, :building_id %><br>
+									</div>
+									<div class="field">
+									<%= f.label :ColumnID, "Please Select Column" %><br>
+									<%= f.grouped_collection_select :ColumnID, Battery.order(:building_id), :column, :building_id, :id, :battery_id %><br>
+									</div>
+									<div class="field">
+									<%= f.label :ElevatorID, "Please Select Elevator" %><br>
+									<%= f.grouped_collection_select :ElevatorID, Column.order(:battery_id), :elevator, :battery_id, :id, :column_id, include_blank: true %><br>
+									</div>
+									<div class="field">
+									<%= f.label :EmployeeID %><br>
+									<%= f.collection_select :EmployeeID, Employee.order(:firstname, :lastname), :firstname, :lastname, :value => "None" %><br>
+									</div>
+									<div class="field">
+									<%= f.label :Result %><br>
+									<%= f.text_field :Result, class:"textboxclass", :value => 'Incomplete' %><br>
+									</div>
+									<div class="field">
+									<%= f.label :Report %><br>
+									<%= f.text_field :Report, class: "textboxclass" %><br>
+									</div>
+									<div class="field">
+									<%= f.label :Status %><br>
+									<%= f.text_field :Status, class:"textboxclass", :value => 'Pending' %><br>
+									</div>
+									<br>
+									<div class="actions">
+									<%= submit_tag "Submit", id:"submit", class:"btn btn-blue" %>
+									</div>
+								<% end %>
 						</div>
-
-						
-
 					</div>
-
 				</div>
 			</section>
             <!-- FOOTER -->

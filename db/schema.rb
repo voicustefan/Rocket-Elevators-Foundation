@@ -148,35 +148,19 @@ ActiveRecord::Schema.define(version: 2022_11_23_161511) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fact_interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "employeeid"
-    t.string "buildingid"
-    t.string "batteriesid"
-    t.string "elevatorid"
-    t.string "columnid"
-    t.string "result"
-    t.string "startdateandtime"
-    t.string "enddateandtime"
-    t.string "success"
-    t.string "report"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "author"
-    t.string "customerID"
-    t.string "buildingID"
-    t.string "batteryID"
-    t.string "columnID"
-    t.string "elevatorID"
-    t.string "employeeID"
-    t.integer "startDate"
-    t.integer "endDate"
-    t.string "result"
-    t.string "report"
-    t.string "status"
+    t.string "Author"
+    t.string "CustomerID"
+    t.string "BuildingID"
+    t.string "BatteryID"
+    t.string "ColumnID"
+    t.string "ElevatorID"
+    t.string "EmployeeID"
+    t.string "StartDate"
+    t.string "EndDate"
+    t.string "Result"
+    t.string "Report"
+    t.string "Status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -190,6 +174,7 @@ ActiveRecord::Schema.define(version: 2022_11_23_161511) do
     t.string "project_description"
     t.string "department"
     t.text "message"
+    t.binary "attached_file"
     t.binary "image"
     t.string "date"
     t.datetime "created_at", null: false
